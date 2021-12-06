@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Billy</string>
+    <string name="welcomeString">Welcome</string>
+    <string name="enter_name_entry">Please enter your name</string>
+    <string name="name_hint">Name</string>
+    <string name="start">Start</string>
+    <string name="app_main_name">Who wants to be a ♂Billy♂onaire</string>
+</resources>
