@@ -7,7 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey_welcome">#363A43</color>
-    <color name="input_name">#7A8089</color>
+    <color name="primary_grey">#363A43</color>
+    <color name="primary_light_grey">#7A8089</color>
     <color name="primary_buttons">#d6be04</color>
+    <color name="primary_dark_white">#E8E8E8</color>
 </resources>

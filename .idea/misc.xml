@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.234375" />
+        <entry key="app/src/main/res/drawable/default_option_border_bg.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.234375" />
+        <entry key="app/src/main/res/drawable/selected_option_border_bg.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/activity_question.xml" value="0.16051912568306012" />
       </map>
     </option>
   </component>

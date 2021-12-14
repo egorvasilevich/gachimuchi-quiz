@@ -10,11 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Billy">
         <activity
-            android:name=".MainActivity"
+            android:name=".QuestionActivity"
             android:exported="true"
             android:theme="@style/NoActionBarTheme"
             android:windowSoftInputMode="adjustResize"
-            >
+            />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

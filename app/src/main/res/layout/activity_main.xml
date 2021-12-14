@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/welcomeString"
-                android:textColor="@color/grey_welcome"
+                android:textColor="@color/primary_grey"
                 android:textSize="30sp"
                 android:textStyle="bold">
 
@@ -66,13 +66,15 @@
                 android:layout_marginTop="20dp">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/main_screen_name_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/input_name"
-                    android:backgroundTint="#FFFFFF"
+                    android:background="@color/purple_500"
                     android:hint="@string/name_hint"
-                    android:textColor="@color/grey_welcome"
-                    android:textColorHint="@color/input_name"></androidx.appcompat.widget.AppCompatEditText>
+                    android:textColor="@color/primary_grey"
+                    android:textColorHint="@color/primary_light_grey">
+
+                </androidx.appcompat.widget.AppCompatEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -83,7 +85,9 @@
                 android:background="@color/primary_buttons"
                 android:backgroundTint="@color/primary_buttons"
                 android:text="@string/start"
-                android:textColor="@color/white"></Button>
+                android:textColor="@color/white">
+
+            </Button>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
