@@ -8,20 +8,38 @@ object Constants{
     const val USER_NAME: String = "user_name"
     const val TOTAL_QUESTIONS: String = "total_question"
     const val CORRECT_ANSWERS: String = "correct_answers"
+    const val QUESTIONS_COUNT: String = "questions_count"
 
     val RESULTS = mapOf<Int, String>(
-
+        0 to "Отвратительно. ♂Van♂ лично грозится опозорить тебя",
         1 to "Ужасные результаты, ♂slave♂. Старайся лучше",
         2 to "Плохой результат, ♂master♂ недоволен",
         3 to "С таким результатом в ♂gym♂ не пустят",
         4 to "Ты кое-что понимаешь в ♂fisting♂. Но нужно глубже",
         5 to "♂Gym♂ уже готов принять тебя",
-        6 to "♂Boys♂ возьмут тебя в следующий dungeon",
+        6 to "♂Boys♂ возьмут тебя в следующий ♂dungeon♂",
         7 to "С такими знаниям, ♂boss of the gym♂ - твой друг",
         8 to "♂Sorry for what♂ - про тебя",
         9 to "♂Dungeon master♂ - это ты",
         10 to "Ты знаешь всё. Может уже выпуcтишь новый фильм?"
 
+    )
+
+    val SHORT_NAME_TAUNTS = listOf(
+        "Имя слишком короткое, ♂Slave♂",
+        "♂Slave♂ не может иметь такое короткое имя",
+        "Ты не можешь зайти в ♂gym♂ с таким коротким"
+    )
+
+    val UNDEFINED_NAME_TAUNTS = listOf(
+        "♂Slave♂, ты не указал имя",
+        "♂Billy♂ не будет знакомиться с безымянными",
+        "♂Van♂ будет оскорблён тобой. Ему нужно твоё имя"
+    )
+
+    val INCORRECT_NUMBER_OF_QUESTIONS_TAUNTS = listOf(
+        "Мы не можем дать столько вопросов, ♂slave♂",
+        "♂Steve♂ не хочет, чтобы ты решал такое количество вопросов"
     )
 
     val NAMES: ArrayList<String> = arrayListOf(
@@ -44,7 +62,7 @@ object Constants{
         Question(
             "В каком году ♂Billy♂ был рождён?",
             R.drawable.billy_profile,
-            listOf("1959", "1962", "1969", "1968"),
+            listOf("1959", "1962", "19♂69♂", "1968"),
             3
         ),
         Question(
@@ -62,7 +80,7 @@ object Constants{
         Question(
             "Укажите город рождения ♂Brad♂",
             R.drawable.brad_profile,
-            listOf("Таллин", "Париж", "Рим", "Чикаго"),
+            listOf("Талл♂in♂", "Париж", "Рим", "Чика♂go♂"),
             4
         ),
         Question(
@@ -176,10 +194,7 @@ object Constants{
     )
 
     fun getQuestions(numberOfQuestions: Int): List<Question> {
-        // Чтобы избежать копирования вопросов - будем выбирать рандомные
-        // и удалять выбранные из общего массива вопросов
         val questionPool: List<Question> = QUESTIONS_POOL.shuffled()
-//        Log.i("Size", "getQuestions: size of questions pool: ${questionPool.size}")
         return questionPool.shuffled().slice(0 until numberOfQuestions)
     }
 
