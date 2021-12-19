@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +17,16 @@ class MainActivity : AppCompatActivity() {
         // Получение элементов поля
         val sStartButton: Button = findViewById(R.id.main_activity_start_button)
         val sNameEdit: AppCompatEditText = findViewById(R.id.main_activity_name_edit)
+
+        // Установка прошлого имени пользователя, если мы пришли с финального экрана
+        val previousUsername = intent.getStringExtra(Constants.USER_NAME)
+        if (previousUsername.toString().isNotEmpty() && previousUsername.toString() != "null") {
+            sNameEdit.setText(previousUsername.toString())
+        }
+        // Установка рандомного имени из списка
+        else {
+            sNameEdit.setText(Constants.NAMES[Random.nextInt(0,Constants.NAMES.size-1)])
+        }
 
         // Обработка поведения при нажатии на кнопку Start
         sStartButton.setOnClickListener {
@@ -34,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra(Constants.USER_NAME, sNameEdit.text.toString())
                     startActivity(intent)
 
-                    finish()
+//                    finish()
                 }
             }
         }

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
@@ -121,8 +122,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         mCurrentPosition <= mQuestionsList!!.size -> {
                             setQuestion()
                         } else -> {
+                            val username = intent.getStringExtra(Constants.USER_NAME).toString()
                             val intent = Intent(this, ResultActivity::class.java)
-                            intent.putExtra(Constants.USER_NAME, intent.getStringExtra(Constants.USER_NAME))
+//                            Log.i("VAR", "onClick: correctAnswers: $mCorrectAnswers")
+//                            Log.i("VAR", "onClick: username: $username")
+//                            Log.i("VAR", "onClick: totalQuestions: $mTotalQuestions")
+                            intent.putExtra(Constants.USER_NAME, username)
                             intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                             intent.putExtra(Constants.TOTAL_QUESTIONS, mTotalQuestions)
                             startActivity(intent)

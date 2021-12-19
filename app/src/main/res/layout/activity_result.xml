@@ -4,57 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     android:padding="20dp"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/result_test_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Result"
-        android:textColor="@android:color/white"
+        android:text="Результат"
+        android:textColor="@color/primary_grey"
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_congratulations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Hey, Congratulations!"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"/>
+
 
     <TextView
-        android:id="@+id/username_text_view"
+        android:id="@+id/result_view_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/primary_light_grey"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/result_view_username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        tools:text="Username" />
+        />
 
     <TextView
-        android:id="@+id/score_text_view"
+        android:id="@+id/result_view_score_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@android:color/secondary_text_dark"
+        android:textColor="@color/primary_light_grey"
         android:textSize="20sp"
-        tools:text="Your Score is 9 out of 10" />
+        />
 
     <Button
-        android:id="@+id/finish_button"
+        android:id="@+id/result_view_restart_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/white"
-        android:text="FINISH"
-        android:textColor="@color/purple_500"
+        android:text="Попробовать заново"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
 </LinearLayout>
