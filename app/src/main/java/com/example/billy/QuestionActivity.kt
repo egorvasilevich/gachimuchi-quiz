@@ -18,6 +18,7 @@ import kotlin.random.Random
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     // Штука для проигрывания звуков
     var mMediaPlayer: MediaPlayer? = null
+    var backMediaPlayer: MediaPlayer? = null
     // Номер нынешнего вопросв
     private var mCurrentPosition: Int = 1
     // Список вопросов на данный запуск квиза
@@ -89,6 +90,15 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val optionViews = getOptionsTextViews()
         for (i in 0 until optionViews.size){
             optionViews.elementAt(i).text = currentQuestion.options[i]
+
+        if (backMediaPlayer != null) {
+            backMediaPlayer!!.stop()
+            backMediaPlayer!!.release()
+            backMediaPlayer = null
+        }
+        backMediaPlayer = MediaPlayer.create(this, R.raw.who_want_to_be_theme)
+        backMediaPlayer!!.isLooping = true
+        backMediaPlayer!!.start()
         }
     }
 
@@ -156,6 +166,13 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     val correctAnswer = question!!.correctAnswer
                     if  (mSelectedOption != correctAnswer) {
                         answerView(mSelectedOption, R.drawable.fail_option_border_bg)
+
+                        if (backMediaPlayer != null) {
+                            backMediaPlayer!!.stop()
+                            backMediaPlayer!!.release()
+                            backMediaPlayer = null
+                        }
+                        //if (backMediaPlayer != null && backMediaPlayer!!.isPlaying) backMediaPlayer!!.pause()
                         if (mMediaPlayer != null) {
                             mMediaPlayer!!.stop()
                             mMediaPlayer!!.release()
@@ -166,6 +183,11 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         mMediaPlayer!!.start()
                     } else {
                         mCorrectAnswers++
+                        if (backMediaPlayer != null) {
+                            backMediaPlayer!!.stop()
+                            backMediaPlayer!!.release()
+                            backMediaPlayer = null
+                        }
                         if (mMediaPlayer != null) {
                             mMediaPlayer!!.stop()
                             mMediaPlayer!!.release()
