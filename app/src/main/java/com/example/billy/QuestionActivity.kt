@@ -10,9 +10,14 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
+//
+import android.media.MediaPlayer
+import kotlin.random.Random
+
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
-
+    //
+    var mMediaPlayer: MediaPlayer? = null
     // Номер нынешнего вопросв
     private var mCurrentPosition: Int = 1
     // Список вопросов на данный запуск квиза
@@ -139,8 +144,14 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     val correctAnswer = question!!.correctAnswer
                     if  (mSelectedOption != correctAnswer) {
                         answerView(mSelectedOption, R.drawable.fail_option_border_bg)
+                        mMediaPlayer = MediaPlayer.create(this, Constants.BAD_ANSWER_SOUND_POOL[Random.nextInt(0,Constants.BAD_ANSWER_SOUND_POOL.size-1)].sound)
+                        mMediaPlayer!!.isLooping = false
+                        mMediaPlayer!!.start()
                     } else {
                         mCorrectAnswers++
+                        mMediaPlayer = MediaPlayer.create(this, Constants.GOOD_ANSWER_SOUND_POOL[Random.nextInt(0,Constants.GOOD_ANSWER_SOUND_POOL.size-1)].sound)
+                        mMediaPlayer!!.isLooping = false
+                        mMediaPlayer!!.start()
                     }
                     answerView(correctAnswer, R.drawable.correct_option_border_bg )
                     if (mCurrentPosition == mQuestionsList!!.size) {

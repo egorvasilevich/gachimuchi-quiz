@@ -19,7 +19,7 @@ object Constants{
         7 to "С такими знаниям, boss of the gym - твой друг",
         8 to "Sorry for what - про тебя",
         9 to "Dungeon master - это ты",
-        10 to "Ты знаешь всё. Может уже выпутишь новый фильм?"
+        10 to "Ты знаешь всё. Может уже выпустишь новый фильм?"
 
     )
 
@@ -64,6 +64,84 @@ object Constants{
         )
     )
 
+    val GOOD_ANSWER_SOUND_POOL: ArrayList<Sound> = arrayListOf(
+        Sound(
+            0,
+            R.raw.alright_man
+        ),
+        Sound(
+            1,
+            R.raw.dungeon_master
+        ),
+        Sound(
+            2,
+            R.raw.nice_ass
+        ),
+        Sound(
+            3,
+            R.raw.work_that_tool
+        ),
+        Sound(
+            4,
+            R.raw.yeeees
+        ),
+        Sound(
+            5,
+            R.raw.yah_bro
+        ),
+        Sound(
+            6,
+            R.raw.yeah_smartass
+        ),
+        Sound(
+            7,
+            R.raw.yeah_uhhhhhh
+        ),
+        Sound(
+            8,
+            R.raw.yeaaaauuuuuuuuuuuuuuuuh
+        )
+    )
+
+    val BAD_ANSWER_SOUND_POOL: ArrayList<Sound> = arrayListOf(
+        Sound(
+            0,
+            R.raw.aaaaaaaaaaaaaaaaaaaa
+        ),
+        Sound(
+            1,
+            R.raw.aaaaaaaaaaaaaah
+        ),
+        Sound(
+            2,
+            R.raw.boy_next_door
+        ),
+        Sound(
+            3,
+            R.raw.come_on_college_boy
+        ),
+        Sound(
+            4,
+            R.raw.come_on_lets_go
+        ),
+        Sound(
+            5,
+            R.raw.come_on_son
+        ),
+        Sound(
+            6,
+            R.raw.come_ooooon
+        ),
+        Sound(
+            7,
+            R.raw.dont_stop
+        ),
+        Sound(
+            8,
+            R.raw.take_it_boy
+        )
+    )
+
     fun getQuestions(numberOfQuestions: Int): List<Question> {
         // Чтобы избежать копирования вопросов - будем выбирать рандомные
         // и удалять выбранные из общего массива вопросов
@@ -71,4 +149,5 @@ object Constants{
         Log.i("Size", "getQuestions: size of questions pool: ${questionPool.size}")
         return questionPool.shuffled().slice(0 until numberOfQuestions)
     }
+
 }
