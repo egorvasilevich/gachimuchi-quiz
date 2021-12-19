@@ -38,17 +38,17 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val submitButton = findViewById<Button>(R.id.questions_activity_submit_button)
         val progressBar = findViewById<ProgressBar>(R.id.questions_activity_progress_bar)
 
+        mTotalQuestions = intent.getIntExtra(Constants.QUESTIONS_COUNT, mTotalQuestions)
         mQuestionsList = Constants.getQuestions(mTotalQuestions)
-        // Установка вопроса на экран
-        setQuestion()
+        progressBar.max = mTotalQuestions
 
         // Настройка кнопок выбора ответа
         getOptionsTextViews().forEach { choiceButton ->
             choiceButton.setOnClickListener(this)
         }
         submitButton.setOnClickListener(this)
-
-        progressBar.max = mTotalQuestions
+        // Установка вопроса на экран
+        setQuestion()
     }
 
     private fun getOptionsTextViews(): ArrayList<TextView> {
