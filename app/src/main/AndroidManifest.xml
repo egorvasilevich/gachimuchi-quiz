@@ -10,11 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Billy">
         <activity
+            android:name=".ResultActivity"
+            android:exported="true"
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".QuestionActivity"
             android:exported="true"
             android:theme="@style/NoActionBarTheme"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

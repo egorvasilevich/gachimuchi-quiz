@@ -1,6 +1,8 @@
 package com.example.billy
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -25,12 +27,18 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private var answerOptionThree: TextView? = null
     private var answerOptionFour: TextView? = null
     private var answerButton: Button? = null
+    private var mCorrectAnswers: Int = 0
+    private var mUserName: String? = null
+
+    private var mTotalQuestions: Int = 10
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
+
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         progressBar = findViewById(R.id.progress_details_bar)
         progressBarText = findViewById(R.id.progress_details_text)
@@ -42,6 +50,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         answerOptionFour = findViewById(R.id.answer_option_four)
         answerButton = findViewById(R.id.answer_button)
 
+        //TODO: Заменить на выбор mTotalQuestions рандомных вопросов
         mQuestionsList = Constants.getQuestions()
         setQuestion()
 
@@ -49,13 +58,18 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         answerOptionTwo!!.setOnClickListener(this)
         answerOptionThree!!.setOnClickListener(this)
         answerOptionFour!!.setOnClickListener(this)
+
+        answerButton!!.setOnClickListener(this)
     }
 
     @SuppressLint("SetTextI18n")
     private fun setQuestion(){
-        mCurrentPosition = 1
         val question = mQuestionsList!![mCurrentPosition-1]
         defaultOptionsView()
+
+        if (mCurrentPosition == mQuestionsList!!.size){
+            answerButton!!.text = "FINISH"
+        }
 
         progressBar!!.progress = mCurrentPosition
         progressBarText!!.text = "$mCurrentPosition" +"/" + progressBar!!.max
@@ -84,6 +98,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onClick(v: View?) {
         when (v?.id){
             R.id.answer_option_one ->{
@@ -97,6 +112,63 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.answer_option_four ->{
                 selectedOptionView(answerOptionFour, 4)
+            }
+            R.id.answer_button -> {
+                if(mSelectedOption == 0){
+                    mCurrentPosition++
+                    when{
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        } else -> {
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTIONS, mTotalQuestions)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    val correctAnswer = question!!.correctAnswer
+                    if  (mSelectedOption != correctAnswer) {
+                        answerView(mSelectedOption, R.drawable.fail_option_border_bg)
+                    } else {
+                        mCorrectAnswers++
+                    }
+                    answerView(correctAnswer, R.drawable.correct_option_border_bg )
+                    if (mCurrentPosition == mQuestionsList!!.size) {
+                        answerButton!!.text = "FINISH"
+                    } else {
+                        answerButton!!.text = "GO TO NEXT QUESTION"
+                    }
+                    mSelectedOption = 0
+                }
+            }
+        }
+    }
+
+    private fun answerView (answer: Int, drawableView: Int){
+        when(answer){
+            1 -> {
+                answerOptionOne!!.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            2 -> {
+                answerOptionTwo!!.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            3 -> {
+                answerOptionThree!!.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            4 -> {
+                answerOptionFour!!.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
             }
         }
     }

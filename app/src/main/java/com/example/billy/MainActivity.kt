@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Введи имя, slave", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, QuestionActivity::class.java)
+                intent.putExtra(Constants.USER_NAME, nameEdit.text.toString())
                 startActivity(intent)
                 finish()
             }
