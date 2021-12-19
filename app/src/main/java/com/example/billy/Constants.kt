@@ -131,7 +131,7 @@ object Constants{
             R.raw.yeah_uhhhhhh
         ),
         Sound(
-            9,
+            8,
             R.raw.yeaaaauuuuuuuuuuuuuuuuh
         )
     )
