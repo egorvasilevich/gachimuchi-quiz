@@ -1,13 +1,11 @@
 package com.example.billy
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
@@ -30,7 +28,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
-        val answerButton = findViewById<Button>(R.id.answer_button)
+        val submitButton = findViewById<Button>(R.id.questions_activity_submit_button)
 
         mQuestionsList = Constants.getQuestions(mTotalQuestions)
         // Установка вопроса на экран
@@ -40,25 +38,25 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         getOptionsTextViews().forEach { choiceButton ->
             choiceButton.setOnClickListener(this)
         }
-        answerButton.setOnClickListener(this)
+        submitButton.setOnClickListener(this)
     }
 
     private fun getOptionsTextViews(): ArrayList<TextView> {
         return arrayListOf(
-            findViewById(R.id.answer_option_one),
-            findViewById(R.id.answer_option_two),
-            findViewById(R.id.answer_option_three),
-            findViewById(R.id.answer_option_four)
+            findViewById(R.id.questions_activity_answer_option_one),
+            findViewById(R.id.questions_activity_answer_option_two),
+            findViewById(R.id.questions_activity_answer_option_three),
+            findViewById(R.id.questions_activity_answer_option_four)
         )
     }
 
     // Функция обновляет экран, добавляя картинку, текст, обновляя ProgressBar для нового вопроса и кнопку принятия решения
     private fun setQuestion(){
-        val progressBar = findViewById<ProgressBar>(R.id.progress_details_bar)
-        val progressBarText = findViewById<TextView>(R.id.progress_details_text)
-        val imageQuestion = findViewById<ImageView>(R.id.image_question)
-        val textQuestion = findViewById<TextView>(R.id.text_question)
-        val answerButton = findViewById<Button>(R.id.answer_button)
+        val progressBar = findViewById<ProgressBar>(R.id.questions_activity_progress_bar)
+        val progressBarText = findViewById<TextView>(R.id.questions_activity_progress_text)
+        val imageQuestion = findViewById<ImageView>(R.id.questions_activity_question_image)
+        val textQuestion = findViewById<TextView>(R.id.questions_activity_question_text)
+        val answerButton = findViewById<Button>(R.id.questions_activity_submit_button)
 
         val currentQuestion = mQuestionsList!![mCurrentPosition-1]
 
@@ -100,23 +98,23 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     override fun onClick(v: View?) {
-        val answerButton = findViewById<Button>(R.id.answer_button)
+        val answerButton = findViewById<Button>(R.id.questions_activity_submit_button)
 
         val options = getOptionsTextViews()
         when (v?.id){
-            R.id.answer_option_one ->{
+            R.id.questions_activity_answer_option_one ->{
                 selectedOptionView(options[0], 1)
             }
-            R.id.answer_option_two ->{
+            R.id.questions_activity_answer_option_two ->{
                 selectedOptionView(options[1], 2)
             }
-            R.id.answer_option_three ->{
+            R.id.questions_activity_answer_option_three ->{
                 selectedOptionView(options[2], 3)
             }
-            R.id.answer_option_four ->{
+            R.id.questions_activity_answer_option_four ->{
                 selectedOptionView(options[3], 4)
             }
-            R.id.answer_button -> {
+            R.id.questions_activity_submit_button -> {
                 if(mSelectedOption == 0){
                     mCurrentPosition++
                     when{
