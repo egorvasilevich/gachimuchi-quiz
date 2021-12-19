@@ -8,20 +8,31 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 
 class MainActivity : AppCompatActivity() {
+
+    // Список элементов на поле. Достучаться по ID не получается, поэтому
+    // используется внутренняя функция findViewById()
+    private var sStartButton: Button = findViewById(R.id.main_activity_start_button)
+    private var sNameEdit: AppCompatEditText = findViewById(R.id.main_activity_name_edit)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val nameEdit: AppCompatEditText = findViewById(R.id.main_screen_name_edit)
-        val startButton: Button = findViewById(R.id.button_start)
-        startButton.setOnClickListener{
-            if (nameEdit.text.toString().isEmpty()){
-                Toast.makeText(this, "Введи имя, slave", Toast.LENGTH_SHORT).show()
+
+        // Обработка поведения при нажатии на кнопку Start
+        sStartButton!!.setOnClickListener {
+            if (sNameEdit!!.text.toString().isEmpty()){
+                Toast.makeText(this, "Введи своё имя, ♂slave♂", Toast.LENGTH_SHORT).show()
             } else {
+                // Переход на другое Activity, если имя прошло все проверки
                 val intent = Intent(this, QuestionActivity::class.java)
-                intent.putExtra(Constants.USER_NAME, nameEdit.text.toString())
-                startActivity(intent)
-                finish()
+                // Проброс полей для Activity с результатом
+                intent.putExtra(Constants.USER_NAME, sNameEdit!!.text.toString())
             }
         }
+    }
+
+    private fun initializeFields(){
+        sStartButton = findViewById(R.id.main_activity_start_button)
+        sNameEdit = findViewById(R.id.main_activity_name_edit)
     }
 }
