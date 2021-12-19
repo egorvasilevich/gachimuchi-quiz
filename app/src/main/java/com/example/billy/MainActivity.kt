@@ -2,6 +2,7 @@ package com.example.billy
 
 import android.content.Intent
 import android.graphics.PointF
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Штука для проигрывания звуков
+        var mMediaPlayer: MediaPlayer? = null
         // Получение элементов поля
         val sStartButton: Button = findViewById(R.id.main_activity_start_button)
         val sNameEdit: AppCompatEditText = findViewById(R.id.main_activity_name_edit)
@@ -39,6 +42,14 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Имя слишком короткое, ♂slave♂", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
+                    if (mMediaPlayer != null) {
+                        mMediaPlayer!!.stop()
+                        mMediaPlayer!!.release()
+                        mMediaPlayer = null
+                    }
+                    mMediaPlayer = MediaPlayer.create(this, R.raw.ass_we_can)
+                    mMediaPlayer!!.isLooping = false
+                    mMediaPlayer!!.start()
                     // Переход на другое Activity, если имя прошло все проверки
                     val intent = Intent(this, QuestionActivity::class.java)
                     // Проброс полей для Activity с результатом

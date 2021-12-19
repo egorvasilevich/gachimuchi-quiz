@@ -10,13 +10,13 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
-//
 import android.media.MediaPlayer
+import java.lang.Exception
 import kotlin.random.Random
 
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
-    //
+    // Штука для проигрывания звуков
     var mMediaPlayer: MediaPlayer? = null
     // Номер нынешнего вопросв
     private var mCurrentPosition: Int = 1
@@ -107,6 +107,15 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     override fun onClick(v: View?) {
+            if (mMediaPlayer != null) {
+                mMediaPlayer!!.stop()
+                mMediaPlayer!!.release()
+                mMediaPlayer = null
+                }
+            mMediaPlayer = MediaPlayer.create(this, R.raw.slap5)
+            mMediaPlayer!!.isLooping = false
+            mMediaPlayer!!.start()
+
         val answerButton = findViewById<Button>(R.id.questions_activity_submit_button)
 
         val options = getOptionsTextViews()
@@ -147,11 +156,21 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     val correctAnswer = question!!.correctAnswer
                     if  (mSelectedOption != correctAnswer) {
                         answerView(mSelectedOption, R.drawable.fail_option_border_bg)
+                        if (mMediaPlayer != null) {
+                            mMediaPlayer!!.stop()
+                            mMediaPlayer!!.release()
+                            mMediaPlayer = null
+                        }
                         mMediaPlayer = MediaPlayer.create(this, Constants.BAD_ANSWER_SOUND_POOL[Random.nextInt(0,Constants.BAD_ANSWER_SOUND_POOL.size-1)].sound)
                         mMediaPlayer!!.isLooping = false
                         mMediaPlayer!!.start()
                     } else {
                         mCorrectAnswers++
+                        if (mMediaPlayer != null) {
+                            mMediaPlayer!!.stop()
+                            mMediaPlayer!!.release()
+                            mMediaPlayer = null
+                        }
                         mMediaPlayer = MediaPlayer.create(this, Constants.GOOD_ANSWER_SOUND_POOL[Random.nextInt(0,Constants.GOOD_ANSWER_SOUND_POOL.size-1)].sound)
                         mMediaPlayer!!.isLooping = false
                         mMediaPlayer!!.start()
