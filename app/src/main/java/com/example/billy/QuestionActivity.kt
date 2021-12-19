@@ -11,85 +11,85 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
-import org.w3c.dom.Text
 
 class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
+    // Номер нынешнего вопросв
     private var mCurrentPosition: Int = 1
-    private var mQuestionsList: ArrayList<Question>? = null
+    // Список вопросов на данный запуск квиза
+    private var mQuestionsList: List<Question>? = null
+    // Выбранный ответ
     private var mSelectedOption: Int = 0
-    private var progressBar: ProgressBar? = null
-    private var progressBarText: TextView? = null
-    private var textQuestion: TextView? = null
-    private var imageQuestion: ImageView? = null
-    private var answerOptionOne: TextView? = null
-    private var answerOptionTwo: TextView? = null
-    private var answerOptionThree: TextView? = null
-    private var answerOptionFour: TextView? = null
-    private var answerButton: Button? = null
+    // Количество правильных ответов
     private var mCorrectAnswers: Int = 0
-    private var mUserName: String? = null
-
-    private var mTotalQuestions: Int = 10
-
+    // Количество вопросов в запуске квиза
+    private var mTotalQuestions: Int = 4
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
-        mUserName = intent.getStringExtra(Constants.USER_NAME)
+        val answerButton = findViewById<Button>(R.id.answer_button)
 
-        progressBar = findViewById(R.id.progress_details_bar)
-        progressBarText = findViewById(R.id.progress_details_text)
-        textQuestion = findViewById(R.id.text_question)
-        imageQuestion = findViewById(R.id.image_question)
-        answerOptionOne = findViewById(R.id.answer_option_one)
-        answerOptionTwo = findViewById(R.id.answer_option_two)
-        answerOptionThree = findViewById(R.id.answer_option_three)
-        answerOptionFour = findViewById(R.id.answer_option_four)
-        answerButton = findViewById(R.id.answer_button)
-
-        //TODO: Заменить на выбор mTotalQuestions рандомных вопросов
-        mQuestionsList = Constants.getQuestions()
+        mQuestionsList = Constants.getQuestions(mTotalQuestions)
+        // Установка вопроса на экран
         setQuestion()
 
-        answerOptionOne!!.setOnClickListener(this)
-        answerOptionTwo!!.setOnClickListener(this)
-        answerOptionThree!!.setOnClickListener(this)
-        answerOptionFour!!.setOnClickListener(this)
-
-        answerButton!!.setOnClickListener(this)
+        // Настройка кнопок выбора ответа
+        getOptionsTextViews().forEach { choiceButton ->
+            choiceButton.setOnClickListener(this)
+        }
+        answerButton.setOnClickListener(this)
     }
 
-    @SuppressLint("SetTextI18n")
+    private fun getOptionsTextViews(): ArrayList<TextView> {
+        return arrayListOf(
+            findViewById(R.id.answer_option_one),
+            findViewById(R.id.answer_option_two),
+            findViewById(R.id.answer_option_three),
+            findViewById(R.id.answer_option_four)
+        )
+    }
+
+    // Функция обновляет экран, добавляя картинку, текст, обновляя ProgressBar для нового вопроса и кнопку принятия решения
     private fun setQuestion(){
-        val question = mQuestionsList!![mCurrentPosition-1]
+        val progressBar = findViewById<ProgressBar>(R.id.progress_details_bar)
+        val progressBarText = findViewById<TextView>(R.id.progress_details_text)
+        val imageQuestion = findViewById<ImageView>(R.id.image_question)
+        val textQuestion = findViewById<TextView>(R.id.text_question)
+        val answerButton = findViewById<Button>(R.id.answer_button)
+
+        val currentQuestion = mQuestionsList!![mCurrentPosition-1]
+
+        // Обновление вида всех кнопок на дефолтный
         defaultOptionsView()
 
+        // Обновление кнопки
         if (mCurrentPosition == mQuestionsList!!.size){
-            answerButton!!.text = "FINISH"
+            answerButton!!.text = "ЗАВЕРШИТЬ"
         }
+        answerButton.text = "ОТВЕТИТЬ"
 
-        progressBar!!.progress = mCurrentPosition
-        progressBarText!!.text = "$mCurrentPosition" +"/" + progressBar!!.max
+        // Обновление ProgressBar и текста рядом
+        progressBar.progress = mCurrentPosition
+        "${mCurrentPosition}/${progressBar.max}".also { progressBarText.text = it }
 
-        textQuestion!!.text = question.question
-        imageQuestion!!.setImageResource(question.image)
-        answerOptionOne!!.text = question.optionOne
-        answerOptionTwo!!.text = question.optionTwo
-        answerOptionThree!!.text = question.optionThree
-        answerOptionFour!!.text = question.optionFour
+        // Установка вопроса, картинки, вариантов ответа
+        textQuestion.text = currentQuestion.question
+        imageQuestion.setImageResource(currentQuestion.image)
+//        for (i in iOptionsTextViews!!.indices) iOptionsTextViews!!.elementAt(i).text = currentQuestion.options[i]
+        val optionViews = getOptionsTextViews()
+        for (i in 0 until optionViews.size){
+            optionViews.elementAt(i).text = currentQuestion.options[i]
+        }
     }
 
+    // Установка вида кнопок на невыбранный вариант ответа
     private fun defaultOptionsView(){
-        val options = ArrayList<TextView?>()
-        options.add(0, answerOptionOne)
-        options.add(1, answerOptionTwo)
-        options.add(2,answerOptionThree)
-        options.add(3, answerOptionFour)
+        val options = getOptionsTextViews()
         for (option in options){
-            option!!.setTextColor(Color.parseColor("#7A8089"))
+            option.setTextColor(Color.parseColor("#7A8089"))
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(
                 this,
@@ -100,18 +100,21 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SetTextI18n")
     override fun onClick(v: View?) {
+        val answerButton = findViewById<Button>(R.id.answer_button)
+
+        val options = getOptionsTextViews()
         when (v?.id){
             R.id.answer_option_one ->{
-                selectedOptionView(answerOptionOne, 1)
+                selectedOptionView(options[0], 1)
             }
             R.id.answer_option_two ->{
-                selectedOptionView(answerOptionTwo, 2)
+                selectedOptionView(options[1], 2)
             }
             R.id.answer_option_three ->{
-                selectedOptionView(answerOptionThree, 3)
+                selectedOptionView(options[2], 3)
             }
             R.id.answer_option_four ->{
-                selectedOptionView(answerOptionFour, 4)
+                selectedOptionView(options[3], 4)
             }
             R.id.answer_button -> {
                 if(mSelectedOption == 0){
@@ -121,7 +124,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                             setQuestion()
                         } else -> {
                             val intent = Intent(this, ResultActivity::class.java)
-                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.USER_NAME, intent.getStringExtra(Constants.USER_NAME))
                             intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                             intent.putExtra(Constants.TOTAL_QUESTIONS, mTotalQuestions)
                             startActivity(intent)
@@ -138,9 +141,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                     }
                     answerView(correctAnswer, R.drawable.correct_option_border_bg )
                     if (mCurrentPosition == mQuestionsList!!.size) {
-                        answerButton!!.text = "FINISH"
+                        answerButton!!.text = "ЗАВЕРШИТЬ"
                     } else {
-                        answerButton!!.text = "GO TO NEXT QUESTION"
+                        answerButton!!.text = "СЛЕДУЮЩИЙ ВОПРОС"
                     }
                     mSelectedOption = 0
                 }
@@ -149,28 +152,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun answerView (answer: Int, drawableView: Int){
-        when(answer){
-            1 -> {
-                answerOptionOne!!.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            2 -> {
-                answerOptionTwo!!.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            3 -> {
-                answerOptionThree!!.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            4 -> {
-                answerOptionFour!!.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-        }
+        val options = getOptionsTextViews()
+        options[answer-1].background = ContextCompat.getDrawable(this, drawableView)
     }
 
     private fun selectedOptionView(tv: TextView?, selectedOptionNumber: Int){
