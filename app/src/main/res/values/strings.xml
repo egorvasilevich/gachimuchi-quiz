@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Billy</string>
-    <string name="welcomeString">Welcome</string>
-    <string name="enter_name_entry">Please enter your name</string>
-    <string name="name_hint">Name</string>
-    <string name="start">Start</string>
-    <string name="app_main_name">Who wants to be a ♂Billy♂onaire</string>
+    <string name="welcomeString">Wel♂cum♂</string>
+    <string name="enter_name_entry">Введи имя</string>
+    <string name="name_hint">Имя</string>
+    <string name="start">Начать</string>
+    <string name="app_main_name">Кто хочет стать ♂Billy♂онером</string>
 </resources>

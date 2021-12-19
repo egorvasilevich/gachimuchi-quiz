@@ -68,10 +68,10 @@
                     android:id="@+id/main_activity_name_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/purple_500"
+                    android:background="@color/white"
                     android:hint="@string/name_hint"
                     android:textColor="@color/primary_grey"
-                    android:textColorHint="@color/primary_light_grey">
+                    android:textColorHint="@color/purple_500">
 
                 </androidx.appcompat.widget.AppCompatEditText>
             </com.google.android.material.textfield.TextInputLayout>
