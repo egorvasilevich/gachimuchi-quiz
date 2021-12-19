@@ -5,4 +5,5 @@
     <string name="name_hint">Имя</string>
     <string name="start">Начать</string>
     <string name="app_main_name">Кто хочет стать ♂Billy♂онером</string>
+    <string name="number_of_questions_hint">Количество вопросов</string>
 </resources>
