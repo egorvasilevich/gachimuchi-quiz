@@ -26,7 +26,7 @@ class ResultActivity : AppCompatActivity(), View.OnClickListener {
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 10)
         val correctAnswers = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
 
-        usernameTextView.text = username
+        usernameTextView.text = "♂$username♂"
         scoreTextView.text = "Ты набрал $correctAnswers из $totalQuestions очков!"
 
         markUserTextView.text = Constants.RESULTS[((correctAnswers*10)/totalQuestions.toDouble()).roundToInt()]

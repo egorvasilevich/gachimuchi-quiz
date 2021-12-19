@@ -10,15 +10,15 @@ object Constants{
     const val CORRECT_ANSWERS: String = "correct_answers"
 
     val RESULTS = mapOf<Int, String>(
-        1 to "Ужасные результаты, slave. Старайся лучше",
-        2 to "Плохой результат, master недоволен",
-        3 to "С таким результатом в gym не пустят",
-        4 to "Ты кое-что понимаешь в fisting. Но нужно глубже",
-        5 to "Gym уже готов принять тебя",
-        6 to "Boys возьмут тебя в следующий dungeon",
-        7 to "С такими знаниям, boss of the gym - твой друг",
-        8 to "Sorry for what - про тебя",
-        9 to "Dungeon master - это ты",
+        1 to "Ужасные результаты, ♂slave♂. Старайся лучше",
+        2 to "Плохой результат, ♂master♂ недоволен",
+        3 to "С таким результатом в ♂gym♂ не пустят",
+        4 to "Ты кое-что понимаешь в ♂fisting♂. Но нужно глубже",
+        5 to "♂Gym♂ уже готов принять тебя",
+        6 to "♂Boys♂ возьмут тебя в следующий dungeon",
+        7 to "С такими знаниям, ♂boss of the gym♂ - твой друг",
+        8 to "♂Sorry for what♂ - про тебя",
+        9 to "♂Dungeon master♂ - это ты",
         10 to "Ты знаешь всё. Может уже выпуcтишь новый фильм?"
 
     )
@@ -59,13 +59,13 @@ object Constants{
             2
         ),
         Question(
-            "Укажите город рождения Brad",
+            "Укажите город рождения ♂Brad♂",
             R.drawable.brad_profile,
             listOf("Таллин", "Париж", "Рим", "Чикаго"),
             4
         ),
         Question(
-            "Укажите фильм в котором НЕ снимался Brad",
+            "Укажите фильм в котором НЕ снимался ♂Brad♂",
             R.drawable.brad_profile,
             listOf("Lord Of The Lockerroom","Plantin' Seed", "Up The Gut", "Park & Ride"),
             1
@@ -79,17 +79,17 @@ object Constants{
         Question(
             "Фраза с началом \"Lets celebrate and suck some...\" появляется в фильме",
             R.drawable.score_poster,
-            listOf("Big Guns 2", "Boy Band", "Cockpit", "Score"),
+            listOf("Big Guns 2", "Boy Band", "♂Cock♂pit", "Score"),
             4
         ),
         Question(
-            "В ходе сцены в лесу, когда была произнесена фраза \"Oh shit I'm sorry\", чего хотел Steve от Brad (фильм Boy Band)?",
+            "В ходе сцены в лесу, когда была произнесена фраза \"Oh shit I'm sorry\", чего хотел ♂Steve♂ от ♂Brad♂ (фильм Boy Band)?",
             R.drawable.boy_band_shot_1,
             listOf("Позвонить", "Узнать погоду", "Купить припасы", "Познакомиться"),
             1,
         ),
         Question(
-            "В какое время позвонил Richard Steeve в фильме CatalinaVille?",
+            "В какое время позвонил ♂Richard♂ ♂Steve♂ в фильме CatalinaVille?",
             R.drawable.catalinaville_shot_1,
             listOf("1:00","1:15", "1:30", "1:45"),
             3
@@ -100,7 +100,7 @@ object Constants{
         // Чтобы избежать копирования вопросов - будем выбирать рандомные
         // и удалять выбранные из общего массива вопросов
         val questionPool: List<Question> = QUESTIONS_POOL.shuffled()
-        Log.i("Size", "getQuestions: size of questions pool: ${questionPool.size}")
+//        Log.i("Size", "getQuestions: size of questions pool: ${questionPool.size}")
         return questionPool.shuffled().slice(0 until numberOfQuestions)
     }
 }
