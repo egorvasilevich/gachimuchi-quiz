@@ -27,7 +27,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     // Количество правильных ответов
     private var mCorrectAnswers: Int = 0
     // Количество вопросов в запуске квиза
-    private var mTotalQuestions: Int = 4
+    private var mTotalQuestions: Int = 10
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +35,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_question)
 
         val submitButton = findViewById<Button>(R.id.questions_activity_submit_button)
+        val progressBar = findViewById<ProgressBar>(R.id.questions_activity_progress_bar)
 
         mQuestionsList = Constants.getQuestions(mTotalQuestions)
         // Установка вопроса на экран
@@ -45,6 +46,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             choiceButton.setOnClickListener(this)
         }
         submitButton.setOnClickListener(this)
+
+        progressBar.max = mTotalQuestions
     }
 
     private fun getOptionsTextViews(): ArrayList<TextView> {
