@@ -1,2 +1,2 @@
 # gachimuchi-quiz
-who want to be a millionier with questions from gachimuchi
+Кто хочет стать миллионером с вопросами из GachiMuchi
