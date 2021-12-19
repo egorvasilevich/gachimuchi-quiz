@@ -54,7 +54,8 @@
                 android:gravity="center"
                 android:text="@string/enter_name_entry"
                 android:textColor="#757575"
-                android:textSize="16sp">
+                android:textSize="16sp"
+                android:layout_marginTop="16dp">
 
             </TextView>
 
@@ -62,7 +63,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/main_activity_name_edit"
@@ -76,11 +77,22 @@
                 </androidx.appcompat.widget.AppCompatEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/main_activity_number_of_questions_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#757575"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp">
+
+            </TextView>
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/main_activity_number_of_questions"

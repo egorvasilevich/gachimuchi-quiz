@@ -1,6 +1,5 @@
 package com.example.billy
 
-import android.util.Log
 import kotlin.collections.ArrayList
 
 object Constants{
@@ -55,19 +54,19 @@ object Constants{
     private val QUESTIONS_POOL: ArrayList<Question> = arrayListOf(
         Question(
             "Какая фамилия у ♂Billy♂?",
-            R.drawable.billy_profile,
+            R.drawable.billy_profile_1,
             listOf("Herrington", "Prizm", "Raulo", "Moritz"),
             1
         ),
         Question(
             "В каком году ♂Billy♂ был рождён?",
-            R.drawable.billy_profile,
+            R.drawable.billy_profile_1,
             listOf("1959", "1962", "19♂69♂", "1968"),
             3
         ),
         Question(
             "Какому знаку зодиака принадлежит ♂Van♂?",
-            R.drawable.van_profile,
+            R.drawable.van_profile_1,
             listOf("Лев", "В♂yes♂ы", "Скорпион", "Рак"),
             3
         ),
@@ -112,6 +111,36 @@ object Constants{
             R.drawable.catalinaville_shot_1,
             listOf("1:00","1:15", "1:30", "1:45"),
             3
+        ),
+        Question(
+            "Какой был номер у пожарной части ♂Billy♂ в фильме Игра с огнём?",
+            R.drawable.playing_with_fire_shot_1,
+            listOf("69", "777", "1", "32"),
+            1
+        ),
+        Question(
+            "Японское слово 'гатимути' означает",
+            R.drawable.gachi_actors_shot_1,
+            listOf("Великий чемпион", "Успешный мужчина", "Мускулистый боец", "Накачанный здоровяк"),
+            4
+        ),
+        Question(
+            "Фраза \"Ass we can\" была сказана на мероприятии по продвижению сайта...",
+            R.drawable.billy_profile_2,
+            listOf("Dora Dura", "Nico Nico", "Bellic Bellic", "Kira Koma"),
+            2
+        ),
+        Question(
+            "Фраза \"Ass we can\" была сказана Billy во время его первого визита в ...",
+            R.drawable.billy_profile_2,
+            listOf("Корею", "Тайланд", "Вьетнам", "Японию"),
+            4
+        ),
+        Question(
+            "Продолжите фразу \"I was gonna be a movie star y'know,...\"",
+            R.drawable.van_profile_2,
+            listOf("spanking and screaming", "modelling and acting", "searching and finding", "drinking and relaxing"),
+            2
         )
     )
 
@@ -196,6 +225,10 @@ object Constants{
     fun getQuestions(numberOfQuestions: Int): List<Question> {
         val questionPool: List<Question> = QUESTIONS_POOL.shuffled()
         return questionPool.shuffled().slice(0 until numberOfQuestions)
+    }
+
+    fun getQuestionsPoolSize(): Int{
+        return QUESTIONS_POOL.size
     }
 
 }
