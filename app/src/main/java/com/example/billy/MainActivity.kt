@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import kotlin.random.Random
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val sStartButton: Button = findViewById(R.id.main_activity_start_button)
         val sNameEdit: AppCompatEditText = findViewById(R.id.main_activity_name_edit)
         val sNumberOfQuestionsEdit: AppCompatEditText = findViewById(R.id.main_activity_number_of_questions)
+        val sNumberOfQuestionsLabel: TextView = findViewById(R.id.main_activity_number_of_questions_label)
 
         // Установка прошлого имени пользователя, если мы пришли с финального экрана
         val previousUsername = intent.getStringExtra(Constants.USER_NAME)
@@ -31,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         else {
             sNameEdit.setText(Constants.NAMES[Random.nextInt(0,Constants.NAMES.size-1)])
         }
+
+        // Установка лейбла с максимальным количеством вопросов
+        "Максимальное количество вопросов: ${Constants.getQuestionsPoolSize()}".also { sNumberOfQuestionsLabel.text = it }
 
         // Обработка поведения при нажатии на кнопку Start
         sStartButton.setOnClickListener {
@@ -59,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, Constants.INCORRECT_NUMBER_OF_QUESTIONS_TAUNTS[Random.nextInt(0,Constants.INCORRECT_NUMBER_OF_QUESTIONS_TAUNTS.size)], Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    if (numberOfQuestions < 3 || numberOfQuestions > Constants.TOTAL_QUESTIONS.length){
+                    if (numberOfQuestions < 3 || numberOfQuestions > Constants.getQuestionsPoolSize()){
                         Toast.makeText(this, Constants.INCORRECT_NUMBER_OF_QUESTIONS_TAUNTS[Random.nextInt(0,Constants.INCORRECT_NUMBER_OF_QUESTIONS_TAUNTS.size)], Toast.LENGTH_SHORT).show()
                     } else {
                         numberOfQuestionsChecked = true
