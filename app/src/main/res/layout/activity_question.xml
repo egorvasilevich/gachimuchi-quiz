@@ -1,55 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F3E88D"
     android:fillViewport="true"
     tools:context=".QuestionActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:background="#5E5E5E"
         android:gravity="center"
-        >
+        android:orientation="vertical"
+        android:padding="16dp">
+
         <TextView
             android:id="@+id/questions_activity_question_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_margin="10dp"
-            android:textColor="@color/primary_grey"
-            android:textSize="22sp"
-            >
-        </TextView>
+            android:gravity="center"
+            android:textColor="@color/primary_dark_white"
+            android:textSize="22sp"></TextView>
+
         <ImageView
             android:id="@+id/questions_activity_question_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:src="@drawable/billy_background"
-            android:contentDescription="test">
-        </ImageView>
+            android:contentDescription="test"
+            android:src="@drawable/billy_background"></ImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center_vertical"
-            android:orientation="horizontal"
-            >
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
             <ProgressBar
                 android:id="@+id/questions_activity_progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:indeterminate="false"
                 android:max="10"
-                android:secondaryProgressTint="@color/purple_500"
                 android:minHeight="50dp"
                 android:progress="0"
-                android:indeterminate="false"
-                style="?android:attr/progressBarStyleHorizontal"
-                >
-            </ProgressBar>
+                android:progressTint="#F8EC7B"></ProgressBar>
+
             <TextView
                 android:id="@+id/questions_activity_progress_text"
                 android:layout_width="wrap_content"
@@ -57,73 +59,74 @@
                 android:gravity="center"
                 android:padding="15dp"
                 android:textColorHint="@color/primary_light_grey"
-                android:textSize="14sp"
-                >
-            </TextView>
+                android:textSize="14sp"></TextView>
 
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/questions_activity_answer_option_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@drawable/default_option_border_bg"
             android:gravity="center"
             android:padding="15dp"
-            android:textColor="@color/primary_light_grey"
-            android:background="@drawable/default_option_border_bg"
-            android:textSize="18sp"
-            >
+            android:textColorHint="#E81313"
+            android:textSize="18sp">
 
         </TextView>
+
         <TextView
             android:id="@+id/questions_activity_answer_option_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@drawable/default_option_border_bg"
             android:gravity="center"
             android:padding="15dp"
-            android:textColor="@color/primary_light_grey"
-            android:background="@drawable/default_option_border_bg"
-            android:textSize="18sp"
-            >
+            android:textColor="@color/primary_grey"
+            android:textSize="18sp">
 
         </TextView>
+
         <TextView
             android:id="@+id/questions_activity_answer_option_three"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@drawable/default_option_border_bg"
             android:gravity="center"
             android:padding="15dp"
-            android:textColor="@color/primary_light_grey"
-            android:background="@drawable/default_option_border_bg"
-            android:textSize="18sp"
-            >
+            android:textColor="@color/black"
+            android:textSize="18sp">
 
         </TextView>
+
         <TextView
             android:id="@+id/questions_activity_answer_option_four"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@drawable/default_option_border_bg"
             android:gravity="center"
             android:padding="15dp"
-            android:textColor="@color/primary_light_grey"
-            android:background="@drawable/default_option_border_bg"
-            android:textSize="18sp"
-            >
+            android:textColor="@color/black"
+            android:textSize="18sp">
 
         </TextView>
+
         <Button
             android:id="@+id/questions_activity_submit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/purple_500"
+            android:background="@drawable/yellow_button_option_border"
+            android:textColor="@color/primary_grey"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="18sp">
+            app:backgroundTint="@null">
+
         </Button>
     </LinearLayout>
 

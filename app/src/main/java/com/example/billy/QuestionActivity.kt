@@ -106,7 +106,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun defaultOptionsView(){
         val options = getOptionsTextViews()
         for (option in options){
-            option.setTextColor(Color.parseColor("#7A8089"))
+            option.setTextColor(Color.parseColor("#242526"))
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(
                 this,
@@ -217,7 +217,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun selectedOptionView(tv: TextView?, selectedOptionNumber: Int){
         defaultOptionsView()
         mSelectedOption = selectedOptionNumber
-        tv!!.setTextColor(Color.parseColor("#363A43"))
+        tv!!.setTextColor(Color.parseColor("#242526"))
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(
             this,

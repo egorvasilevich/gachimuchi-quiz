@@ -2,20 +2,20 @@
     <!-- Base application theme. -->
     <style name="Theme.Billy" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryVariant">#E91E63</item>
+        <item name="colorOnPrimary">#D8C2DC</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">#3F51B5</item>
+        <item name="colorSecondaryVariant">#03A9F4</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="NoActionBarTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/white</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#B8ADC6</item>
+        <item name="colorAccent">#050505</item>
     </style>
 </resources>
