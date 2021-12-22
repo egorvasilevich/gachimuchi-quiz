@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#5E5E5E"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
 
@@ -13,48 +15,46 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Результат"
-        android:textColor="@color/primary_grey"
+        android:textColor="@color/primary_dark_white"
         android:textSize="25sp"
         android:textStyle="bold" />
-
 
 
     <TextView
         android:id="@+id/result_view_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="10dp"
-        android:textColor="@color/primary_light_grey"
-        android:textSize="18sp"/>
+        android:gravity="center"
+        android:textColor="@color/primary_dark_white"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/result_view_username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/primary_dark_white"
         android:textSize="22sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/result_view_score_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/primary_light_grey"
-        android:textSize="20sp"
-        />
+        android:textColor="@color/primary_dark_white"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/result_view_restart_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@android:color/white"
+        android:background="@drawable/yellow_button_option_border"
         android:text="Попробовать заново"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_grey"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
 </LinearLayout>
